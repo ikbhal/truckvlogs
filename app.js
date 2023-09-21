@@ -4,6 +4,7 @@ const app = express();
 const sqlite3 = require('sqlite3').verbose();
 const bodyParser = require('body-parser');
 const db = new sqlite3.Database('schema/channels.db');
+const port = 3052;
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Set up middleware, routes, and templates here.
@@ -47,7 +48,7 @@ app.post('/admin', (req, res) => {
 });
 
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || port;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
