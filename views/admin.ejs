@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+</head>
+
+<body>
+    <h1>Admin Page</h1>
+    <!-- Form for Adding Channels -->
+    <h2>Add a New Channel</h2>
+    <form action="/admin" method="POST">
+        <label for="channelName">YouTube Channel Name:</label>
+        <input type="text" id="channelName" name="channel_name" required><br>
+
+        <label for="channelLink">YouTube Channel Link:</label>
+        <input type="text" id="channelLink" name="channel_link" required><br>
+
+        <label for="country">Country:</label>
+        <input type="text" id="country" name="country" required><br>
+
+        <label for="language">Language:</label>
+        <input type="text" id="language" name="language" required><br>
+
+        <label for="state">State:</label>
+        <input type="text" id="state" name="state"><br>
+
+        <label for="notes">Notes:</label>
+        <input type="text" id="notes" name="notes" required><br>
+
+        <button type="submit">Add Channel</button>
+    </form>
+
+    <!-- List of Channels -->
+    <h2>List of Channels</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Channel Name</th>
+                <th>Channel Link</th>
+                <th>Country</th>
+                <th>Language</th>
+                <th>State</th>
+                <th>Notes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% channels.forEach(channel=> { %>
+                <tr>
+                    <td>
+                        <%= channel.id %>
+                    </td>
+                    <td>
+                        <%= channel.channel_name %>
+                    </td>
+                    <td><a href="<%= channel.channel_link %>" target="_blank">
+                            <%= channel.channel_link %>
+                        </a></td>
+                    <td>
+                        <%= channel.country %>
+                    </td>
+                    <td>
+                        <%= channel.language %>
+                    </td>
+                    <td>
+                        <%= channel.state %>
+                    </td>
+                    <td>
+                        <%= channel.notes %>
+                    </td>
+                </tr>
+                <% }) %>
+        </tbody>
+    </table>
+
+</body>
+
+</html>
